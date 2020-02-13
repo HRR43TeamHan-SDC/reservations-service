@@ -16,6 +16,7 @@ const generateReservations = () => {
         dateTime.setMinutes(dateTime.getMinutes() + 15);
         if (Math.random() > 0.5) {
           reservations.push([null, i, new Date(dateTime)]);
+          console.log('adding', reservations.length)
         }
       }
     }
