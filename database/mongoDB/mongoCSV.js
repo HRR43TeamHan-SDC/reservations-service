@@ -1,9 +1,8 @@
 const faker = require('faker');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 const csvWriter = createCsvWriter({
-  path: './data.csv',
+  path: './mongo.csv',
   header: [
-    {id: 'id', title: 'id'},
     {id: 'restaurantId', title: 'restaurantId'},
     {id: 'dateTime', title: 'dateTime'}
   ]
@@ -42,4 +41,3 @@ let append = () => {
 
 console.time('writeCSV');
 append();
-

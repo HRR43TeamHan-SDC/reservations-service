@@ -2,3 +2,5 @@ node_modules/
 coverage/
 credentials.js
 bundle.js
+data.csv
+mongo.csv
