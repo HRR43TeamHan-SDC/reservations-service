@@ -1,4 +1,6 @@
+require('newrelic');
 const app = require('./app');
+
 
 
 const port = 4444;

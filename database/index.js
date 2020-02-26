@@ -7,11 +7,10 @@ connection.connect();
 const getReservations = async (restaurantId, dateTime, callback) => {
   const dayStart = new Date(dateTime);
   dayStart.setHours(0, 0, 0, 0);
-
   const dayEnd = new Date(dayStart);
   dayEnd.setHours(23, 45, 0, 0);
 
-  const select = 'SELECT * FROM reservation WHERE restaurantId = ? AND dateTime BETWEEN ? and ?;';
+  const select = 'SELECT * FROM reservation WHERE "restaurantId" = ? AND "dateTime" BETWEEN ? and ?;';
   connection.query(
     select,
     [restaurantId, dayStart, dayEnd],
@@ -20,10 +19,9 @@ const getReservations = async (restaurantId, dateTime, callback) => {
         console.error(error);
         callback(error);
       } else {
-        callback(null, results.map((record) => record.dateTime));
+        callback(null, results.map(record) => record.dateTime);
       }
-    },
-  );
+    });
 };
 
 
@@ -76,6 +74,6 @@ module.exports = {
   postReservation,
   updateReservation,
   deleteReservation
-} 
+}
 
 module.exports.connection = connection;

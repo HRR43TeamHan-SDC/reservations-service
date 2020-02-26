@@ -3,4 +3,8 @@ coverage/
 credentials.js
 bundle.js
 data.csv
+data_old1.csv
+data_old2.csv
 mongo.csv
+newrelic.js
+newrelic_agent.log
