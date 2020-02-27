@@ -9,6 +9,7 @@ const client = require('../database/postgreSQL/index.js');
 
 
 const app = express();
+app.use('/bundle.js', express.static('../client/dist/bundle.js'));
 app.use('/:restaurantId', express.static('../client/dist'));
 app.use(cors());
 
