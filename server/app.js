@@ -9,12 +9,12 @@ const client = require('../database/postgreSQL/index.js');
 
 
 const app = express();
-app.use(express.static('./client/dist'));
+// app.use(express.static('./client/dist'));
 app.use(cors());
 
 
 
-app.get('/?id=:restaurantId', (req, res) => {
+app.get('/:restaurantId', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/dist/index.html'));
 });
 
