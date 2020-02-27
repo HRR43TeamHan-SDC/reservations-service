@@ -1,12 +1,15 @@
 const { Client } = require('pg')
+
+
 const client = new Client({
-  user: "student",
-  password: "student",
-  host: "localhost",
-  port: 5432,
-  database: "postgres"
+  user: process.env.POSTGRES_USER || "student",
+  password: process.env.POSTGRES_PSWD || "student",
+  host: process.env.POSTGRES_HOST || "localhost",
+  port: process.env.POSTGRES_PORT || 5432,
+  database: process.env.POSTGRES_DB || "postgres"
 })
 client.connect()
+
 
 const getReservations = async (restaurantId, dateTime, callback) => {
   const dayStart = new Date(dateTime);

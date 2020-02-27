@@ -2,6 +2,8 @@ const cors = require('cors');
 const path = require('path');
 const bodyParser = require('body-parser')
 const express = require('express');
+const dotenv = require('dotenv');
+dotenv.config()
 // const database = require('../database/index.js');
 // const client = require('../database/mongoDB/index.js')
 const client = require('../database/postgreSQL/index.js');
