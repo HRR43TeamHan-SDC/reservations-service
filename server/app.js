@@ -15,7 +15,7 @@ app.use(cors());
 
 
 app.get('/:restaurantId', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+  res.sendFile(path.join(__dirname, '../client/dist'));
 });
 
 app.get('/api/reservations/:restaurantId/dateTime/:dateTime', (req, res) => {
