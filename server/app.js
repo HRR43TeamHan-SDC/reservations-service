@@ -9,14 +9,14 @@ const client = require('../database/postgreSQL/index.js');
 
 
 const app = express();
-// app.use(express.static('./client/dist'));
+app.use('/:restaurantId', express.static('../client/dist'));
 app.use(cors());
 
 
 
-app.get('/:restaurantId', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/dist'));
-});
+// app.get('/:restaurantId', (req, res) => {
+//   res.sendFile(path.join(__dirname, '../client/dist'));
+// });
 
 app.get('/api/reservations/:restaurantId/dateTime/:dateTime', (req, res) => {
   client.getReservations(
