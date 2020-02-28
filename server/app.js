@@ -13,10 +13,16 @@ app.use(cors());
 app.use('/bundle.js', express.static(path.resolve(__dirname, '../client/dist/bundle.js')));
 app.use('/:restaurantId', express.static(path.resolve(__dirname, '../client/dist/')));
 
+if (LOADERIO_VERIFY) {
+  app.get(`/${LOADERIO_VERIFY}.txt`, (req, res) => {
+    res.send(`${LOADERIO_VERIFY}`)
+  });
+}
+
 
 
 // app.get('/:restaurantId', (req, res) => {
-//   res.sendFile(path.join(__dirname, '../client/dist'));
+//   res.sendFile(path.join(__dirname, './client/dist'));
 // });
 
 app.get('/api/reservations/:restaurantId/dateTime/:dateTime', (req, res) => {
