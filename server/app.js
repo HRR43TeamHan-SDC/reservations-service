@@ -13,9 +13,9 @@ app.use(cors());
 app.use('/bundle.js', express.static(path.resolve(__dirname, '../client/dist/bundle.js')));
 app.use('/:restaurantId', express.static(path.resolve(__dirname, '../client/dist/')));
 
-if (LOADERIO_VERIFY) {
-  app.get(`/${LOADERIO_VERIFY}.txt`, (req, res) => {
-    res.send(`${LOADERIO_VERIFY}`)
+if (process.env.LOADERIO_VERIFY) {
+  app.get(`/${process.env.LOADERIO_VERIFY}.txt`, (req, res) => {
+    res.send(`${process.env.LOADERIO_VERIFY}`)
   });
 }
 
