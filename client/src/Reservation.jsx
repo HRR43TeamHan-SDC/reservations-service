@@ -148,7 +148,8 @@ const Reservation = ({ restaurantId }) => {
         </div>
       </div>
       <div className="booked-box">
-        <img className="icon" src="/ic_social_proof.svg" />
+        {/* <div>:book:</div> */}
+        {/* <img className="icon" src="/ic_social_proof.svg" /> */}
         <div className="reservation-booked">{`Booked ${taken} times today`}</div>
       </div>
       <div className="specials">

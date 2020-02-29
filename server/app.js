@@ -1,5 +1,7 @@
 const cors = require('cors');
 const path = require('path');
+const fs = require('fs');
+const zlib = require('zlib');
 const bodyParser = require('body-parser')
 const express = require('express');
 const dotenv = require('dotenv').config();
@@ -10,7 +12,13 @@ const client = require('../database/postgreSQL/index.js');
 
 const app = express();
 app.use(cors());
-app.use('/bundle.js', express.static(path.resolve(__dirname, '../client/dist/bundle.js')));
+// app.use('/bundle.js', express.static(path.resolve(__dirname, '../client/dist/bundle.js')));
+app.get('/bundle.js', (req, res) => {
+  const gzip = zlib.createGzip();
+  const bundle = fs.createReadStream(path.resolve(__dirname, '../client/dist/bundle.js'));
+  res.set({ 'Content-Encoding': 'gzip' });
+  bundle.pipe(gzip).pipe(res);
+});
 app.use('/:restaurantId', express.static(path.resolve(__dirname, '../client/dist/')));
 
 if (process.env.LOADERIO_VERIFY) {
