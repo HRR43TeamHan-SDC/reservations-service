@@ -19,13 +19,10 @@ app.get('/bundle.js', (req, res) => {
   res.set({ 'Content-Encoding': 'gzip' });
   bundle.pipe(gzip).pipe(res);
 });
+app.use('/loaderio*', express.static(path.resolve(__dirname, '../loaderio-6df67e35525fb68b03ee278605c943c6.txt')));
 app.use('/:restaurantId', express.static(path.resolve(__dirname, '../client/dist/')));
 
-if (process.env.LOADERIO_VERIFY) {
-  app.get(`/${process.env.LOADERIO_VERIFY}.txt`, (req, res) => {
-    res.send(`${process.env.LOADERIO_VERIFY}`)
-  });
-}
+
 
 
 
